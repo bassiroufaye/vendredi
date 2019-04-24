@@ -110,7 +110,6 @@ public class Paiement extends AppCompatActivity {
                 Toast.makeText(Paiement.this,modelpaiement.getDebit(),Toast.LENGTH_LONG).show();
                 Toast.makeText(Paiement.this,modelpaiement.getReference(),Toast.LENGTH_LONG).show();
                 Toast.makeText(Paiement.this,modelpaiement.getCodecarte(),Toast.LENGTH_LONG).show();
-
                 //modelpaiement.getQuipaie(Toast.makeText(Paiement.this,radiopersoButton.getText().toString(),Toast.LENGTH_LONG).show());
                 //modelpaiement.getDebit();
 
