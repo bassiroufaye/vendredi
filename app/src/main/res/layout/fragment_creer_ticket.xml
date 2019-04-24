@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Activity.CreerTicket"
+    android:paddingTop = "10dp"
+    android:paddingLeft = "8dp"
+    android:paddingRight = "8dp"
+    android:textStyle="bold">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="Créer ici votre ticket pour qu'on puisse vous envoyer un technicen ou vous assister à distance"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="#17C12F"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/ref"
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:text="Référence"
+                android:textSize="20dp"
+                android:textColor="#17C12F"/>
+
+            <EditText
+                android:id="@+id/idref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/typtick"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:text="Type de ticket"
+                android:textSize="20dp"
+                android:textColor="#17C12F"/>
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/autre"
+                android:layout_width="138dp"
+                android:layout_height="wrap_content"
+                android:text="Autre tickets"
+                android:textSize="20dp"
+                android:textColor="#17C12F"/>
+
+            <EditText
+                android:id="@+id/idautre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/prio"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:text="Priorité"
+                android:textSize="20dp"
+                android:textColor="#17C12F"/>
+
+            <Spinner
+                android:id="@+id/spin"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp">
+
+            <TextView
+                android:id="@+id/duree"
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
+                android:text="Durée"
+                android:textSize="20dp"
+                android:textColor="#17C12F"/>
+
+            <Spinner
+                android:id="@+id/spin03"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="10dp">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFDD39"
+            android:textColor="#000000"
+            android:text="Envoyer" />
+
+        <Button
+            android:id="@+id/idannuleticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="1"
+            android:background="#FFDD39"
+            android:paddingLeft="8dp"
+            android:text="Annuler"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -14,14 +14,17 @@ public class MyObject {
     }
 
     public void setText(String text){
+
         this.text=text;
     }
 
     public int getImageUrl(){
+
         return imageUrl;
     }
 
     public void setImageUrl(int imageUrl){
+
         this.imageUrl=imageUrl;
     }
 

@@ -60,6 +60,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             textViewView.setText(myObject.getText());
             // Picasso.with(imageView.getContext()).load(myObject.getImageUrl()).centerCrop().fit().into(imageView);
             imageView.setImageResource(myObject.getImageUrl());
+
+            //C'est ici qu'on navigue sur les différentes activités
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -114,8 +116,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public void onClick(View v) {
 
             //itemClickListener.onClick(v,getAdapterPosition(),false);
-
-
         }
     }
 

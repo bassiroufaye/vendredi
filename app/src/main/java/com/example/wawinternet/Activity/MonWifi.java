@@ -6,24 +6,26 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.wawinternet.Activity.MainActivity;
 import com.example.wawinternet.R;
 
-public class Messagerie extends AppCompatActivity {
+public class MonWifi extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messagerie);
+        setContentView(R.layout.activity_mon_wifi);
 
+        //C'est pour le toolbar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle("Messagerie");
+        getSupportActionBar().setTitle("Mon Wifi");
         myToolbar.setNavigationIcon(R.drawable.back2);
 
         myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
     }
