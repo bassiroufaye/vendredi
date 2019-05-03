@@ -107,14 +107,12 @@ public class CreerTicket extends Fragment implements AdapterView.OnItemSelectedL
 
 
         //get the spinner from the xml.
-        final Spinner dropdown =(Spinner) v.findViewById(R.id.spinner1);
-        Spinner dropdown2 =(Spinner) v.findViewById(R.id.spin);
-        Spinner dropdown3 =(Spinner) v.findViewById(R.id.spin03);
+        Spinner dropdown =(Spinner) v.findViewById(R.id.spinner1);
 
         dropdown.setOnItemSelectedListener(this);
 
         //create a list of items for the spinner.
-        String[] items = new String[]{"Perte de connexion", "Connexion lente", "Débit faible", "Connexion instable"};
+        String[] items = new String[]{"Perte", "Lenteur", "Débit faible", "Instabilité","Autre"};
         //create an adapter to describe how the items are displayed, adapters are used in several places in android.
         //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter< >(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
@@ -122,20 +120,9 @@ public class CreerTicket extends Fragment implements AdapterView.OnItemSelectedL
         //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
 
-        //create a list of items for the spinner.
-        String[] item2 = new String[]{"Moins de 1 heure", "Depuis 1 heure", "Depuis 2 heure","Depuis 3 heure", "Depuis 5 heure", "Plus de 5 heure", "Depuis 1 jour", "Depuis 1 mois", "Plus"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter< >(getActivity(), android.R.layout.simple_spinner_dropdown_item, item2);
-        dropdown2.setAdapter(adapter2);
-
-        String[] item3 = new String[]{"Très urgent", "Urgent", "Moins urgent"};
-        ArrayAdapter<String> adapter3 = new ArrayAdapter< >(getActivity(), android.R.layout.simple_spinner_dropdown_item, item3);
-        dropdown3.setAdapter(adapter3);
-
         //afficherticket();
         recupereref=(EditText) v.findViewById(R.id.idref);
         recupereautre=(EditText) v.findViewById(R.id.idautre);
-       String text1 = dropdown.getSelectedItem().toString();
-        String text2 = dropdown2.getSelectedItem().toString();
         boutvalticket=(Button) v.findViewById(R.id.button5);
         boutvalticket.setOnClickListener(new View.OnClickListener() {
             @Override

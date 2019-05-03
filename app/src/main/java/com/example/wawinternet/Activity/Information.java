@@ -23,7 +23,7 @@ public class Information extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle("Information");
+        getSupportActionBar().setTitle("Mon Wifi");
         myToolbar.setNavigationIcon(R.drawable.back2);
 
         myToolbar.setNavigationOnClickListener(new View.OnClickListener() {

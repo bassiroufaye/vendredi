@@ -14,18 +14,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop = "0dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="69dp"
             android:gravity="center"
             android:text="Créer ici votre ticket pour qu'on puisse vous envoyer un technicen ou vous assister à distance"
+            android:textColor="#000000"
             android:textSize="15dp"
-            android:textStyle="bold"
-            android:textColor="#17C12F"/>
-
+            android:textStyle="bold" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,12 +33,12 @@
             android:layout_marginVertical="5dp">
 
             <TextView
-                android:id="@+id/ref"
+                android:id="@+id/ref1"
                 android:layout_width="138dp"
                 android:layout_height="wrap_content"
                 android:text="Référence"
                 android:textSize="20dp"
-                android:textColor="#17C12F"/>
+                android:textColor="#000000"/>
 
             <EditText
                 android:id="@+id/idref"
@@ -46,7 +46,10 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
+
+
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="Type de ticket"
                 android:textSize="20dp"
-                android:textColor="#17C12F"/>
+                android:textColor="#000000"/>
 
             <Spinner
                 android:id="@+id/spinner1"
@@ -81,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:text="Autre tickets"
                 android:textSize="20dp"
-                android:textColor="#17C12F"/>
+                android:textColor="#000000"/>
 
             <EditText
                 android:id="@+id/idautre"
@@ -93,80 +96,121 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/prio"
+            android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="5dp">
+            android:text="Durée"
+            android:textColor="#000000"
+            android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/prio"
-                android:layout_width="136dp"
-                android:layout_height="wrap_content"
-                android:text="Priorité"
-                android:textSize="20dp"
-                android:textColor="#17C12F"/>
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/spin"
+            <RadioButton
+                android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="- 1h" />
 
-        </LinearLayout>
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1h et 3h" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginVertical="5dp">
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="+3h" />
+        </RadioGroup>
 
             <TextView
                 android:id="@+id/duree"
                 android:layout_width="136dp"
                 android:layout_height="wrap_content"
-                android:text="Durée"
+                android:text="Priorité"
                 android:textSize="20dp"
-                android:textColor="#17C12F"/>
-
-            <Spinner
-                android:id="@+id/spin03"
+                android:textColor="#000000"/>
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Basse" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Haute"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Urgente" />
+            </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:background="#FFDD39"
+                android:text="Envoyer"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/button209"
+                android:layout_width="11dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF" />
+
+            <Button
+                android:id="@+id/idannuleticket"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#FFDD39"
+                android:text="Annuler"
+                android:textColor="#000000"/>
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginVertical="10dp">
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#FFDD39"
-            android:textColor="#000000"
-            android:text="Envoyer" />
-
-        <Button
-            android:id="@+id/idannuleticket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_weight="1"
-            android:background="#FFDD39"
-            android:paddingLeft="8dp"
-            android:text="Annuler"
-            android:textColor="#000000" />
     </LinearLayout>
-
-
-    </LinearLayout>
-
 </FrameLayout>
