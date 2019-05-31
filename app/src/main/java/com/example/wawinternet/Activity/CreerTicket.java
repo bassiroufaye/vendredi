@@ -31,7 +31,7 @@ public class CreerTicket extends Fragment implements AdapterView.OnItemSelectedL
     private static final String ARG_PARAM2 = "param2";
     private Spinner spin1,spin2;
     private EditText recupereref, recupereautre;
-    private TextView text5;
+    private String txt1;
     private Button boutvalticket;
     private Button boutannuleticket;
     private ModelTicket modelTicket;
@@ -78,8 +78,7 @@ public class CreerTicket extends Fragment implements AdapterView.OnItemSelectedL
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
-        String txt1=parent.getItemAtPosition(position).toString();
-        Toast.makeText(getActivity(),"txt1"+txt1,Toast.LENGTH_SHORT).show();
+        txt1=parent.getItemAtPosition(position).toString();
     }
 
     @Override
@@ -130,6 +129,7 @@ public class CreerTicket extends Fragment implements AdapterView.OnItemSelectedL
 
                 Toast.makeText(getActivity(),recupereref.getText(),Toast.LENGTH_SHORT).show();
                 Toast.makeText(getActivity(),recupereautre.getText(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),txt1,Toast.LENGTH_SHORT).show();
                 //Toast.makeText(CreerTicket.this,text1.getText(),Toast.LENGTH_LONG).show();
                 //Toast.makeText(CreerTicket.this,text2.getText(),Toast.LENGTH_LONG).show();
             }

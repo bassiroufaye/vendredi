@@ -2,32 +2,18 @@ package com.example.wawinternet.Modeles;
 
 
 public class ModelPaiement {
-    private int id;
+   // private int id;
 
     private String quipaie;
     private String debit;
     private String reference;
     private String codecarte;
 
-    public ModelPaiement(int id, String quipaie, String debit, String reference, String codecarte) {
-        this.id = id;
-        this.quipaie = quipaie;
-        this.debit = debit;
-        this.reference = reference;
-        this.codecarte = codecarte;
-    }
-
     public ModelPaiement() {
 
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getQuipaie() {
         return quipaie;

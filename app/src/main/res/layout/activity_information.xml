@@ -20,11 +20,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
         android:orientation="vertical"
         android:paddingLeft="8dp"
-        android:paddingTop="0dp"
         android:paddingRight="8dp">
 
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Merci de renseigner votre référence pour pouoir accéder à votre espace personnelle"
+            android:textColor="#000000" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -43,14 +51,10 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:background="#FFDD39"
+            android:text="Entrer" />
 
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="289dp"
-        android:layout_height="564dp"
-        android:orientation="vertical"></LinearLayout>
 
 </FrameLayout>

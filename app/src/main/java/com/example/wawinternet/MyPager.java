@@ -59,7 +59,7 @@ public class MyPager extends PagerAdapter {
             case 2:
                 return R.drawable.four;
             case 3:
-                return R.drawable.five;
+                return R.drawable.info02;
             default:
                 return R.drawable.slow;
         }

@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFDD39"
     tools:context="com.example.wawinternet.Activity.Contact">
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
@@ -15,6 +16,7 @@
         android:id="@+id/circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="#17C12F"
         android:layout_alignBottom="@id/view_pager"
         android:layout_centerHorizontal="true"
         android:padding="16dp" />

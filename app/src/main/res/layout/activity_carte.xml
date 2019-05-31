@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.Reference">
+    tools:context=".Activity.Carte">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Veuillez saisir les informationss ci-dessous pour pouvoir recupérer votre imsi"
+            android:text="Renseignement des informations de la carte"
             android:textColor="#000000" />
 
         <android.support.design.widget.TextInputLayout
@@ -40,23 +40,10 @@
             android:layout_marginTop="16dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText4"
+                android:id="@+id/editnumserie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nom"
-                android:inputType="textPersonName" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Prénom"
+                android:hint="Numéro Série"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
@@ -65,10 +52,22 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp">
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editText3"
+                android:id="@+id/editdebit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Téléphone"
+                android:hint="Débit"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editdureecarte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Duréé"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
@@ -78,7 +77,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/envoiCarte"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -90,7 +89,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
             <Button
-                android:id="@+id/boutAnRef"
+                android:id="@+id/annuleCarte"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:background="#FFDD39"
@@ -99,13 +98,5 @@
                 app:layout_constraintStart_toEndOf="@+id/button3"
                 app:layout_constraintTop_toBottomOf="@+id/editText5" />
         </LinearLayout>
-        <TextView
-            android:id="@+id/rensCarte"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Information sur les cartes"
-            android:textColor="#000000"
-            android:layout_marginTop="16dp"/>
     </LinearLayout>
 </FrameLayout>

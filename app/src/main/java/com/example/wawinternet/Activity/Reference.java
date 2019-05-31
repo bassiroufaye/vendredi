@@ -7,12 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.wawinternet.R;
 
 public class Reference extends AppCompatActivity {
 
     private Button boutclear;
+    private TextView recurenscarte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,15 @@ public class Reference extends AppCompatActivity {
             }
         });
 
+
+        recurenscarte=(TextView) findViewById(R.id.rensCarte);
+        recurenscarte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentcarte=new Intent(Reference.this,Carte.class);
+                startActivity(intentcarte);
+            }
+        });
         boutclear=(Button) findViewById(R.id.boutAnRef);
         boutclear.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MesMessages.ServiceCommerciale">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:background = "#FFDD39"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="313dp"
+        android:layout_height="301dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/wawmessage"
+        android:gravity="center"
+        android:text="                                    Cher futur waw client,                                Nous avons le plaisir de vous informer que        vous etes bien eligible sur notre réseau. Merci d'imprimer puis de remplir le formulaire qu'on vous a envoyé sur votre email. Vous nous le renvoyez avec une copie de votre pièce d'identité ou passeport. Ensuite vous pouvez payer par Oramge Money ou venir à l'agence.
+                Merci d'avoir dit oui à WAW TELECOM. "
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
+
+
+</android.support.constraint.ConstraintLayout>

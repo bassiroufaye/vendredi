@@ -7,12 +7,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.wawinternet.R;
 
 public class Information extends AppCompatActivity {
     private Button b1;
-    private EditText ed1;
+    private EditText recuref;
     private EditText ed2;
 
     @Override
@@ -33,17 +34,20 @@ public class Information extends AppCompatActivity {
             }
         });
 
-        ed1=(EditText) findViewById(R.id.editText1);
+        recuref=(EditText) findViewById(R.id.idref);
        // ed2=ed1.getText().toString();
             b1=(Button) findViewById(R.id.button2);
-
-            b1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent=new Intent(Information.this, MonWifi.class);
-                    startActivity(intent);
-                }
-            });
+                b1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(recuref.getText().toString().equals("AB259944")){
+                            Intent intent=new Intent(Information.this, MonWifi.class);
+                            startActivity(intent);
+                        }
+                        else
+                            Toast.makeText(Information.this, "La référence entrée est invalide", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }

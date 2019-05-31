@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void ajouterVilles() {
         menu.add(new MyObject("Paiement",R.drawable.paidraw));
-        menu.add(new MyObject("Ticket",R.drawable.ticketdraw));
+        menu.add(new MyObject("Ticket",R.drawable.ticket01));
         menu.add(new MyObject("Messagerie",R.drawable.beyemes));
-        menu.add(new MyObject("Mon wifi",R.drawable.espdraw));
+        menu.add(new MyObject("Mon wifi",R.drawable.wifi));
         menu.add(new MyObject("S'Abonner",R.drawable.abonnerdraw));
         menu.add(new MyObject("Information",R.drawable.beyeinf));
         //cities.add(new MyObject("Ticket","http://www.traditours.com/images/Photos%20Angleterre/ForumLondonBridge.jpg"));

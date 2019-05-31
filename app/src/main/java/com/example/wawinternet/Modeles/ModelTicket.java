@@ -1,22 +1,14 @@
 package com.example.wawinternet.Modeles;
 
 public class ModelTicket {
-    int id;
     private String ref;
     private String typeticket;
     private String autre;
     private String priorite;
     private String duree;
 
-    public int getId() {
-        return id;
-    }
 
     public ModelTicket() {
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getRef() {

@@ -10,7 +10,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#FFDD39"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,8 +20,9 @@
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="677dp"
-
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="?attr/colorPrimary"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
         tools:layout_editor_absoluteX="0dp" />
 

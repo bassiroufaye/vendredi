@@ -14,8 +14,20 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wawinternet.Modeles.ModelCarte;
 import com.example.wawinternet.Modeles.ModelPaiement;
 import com.example.wawinternet.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import static java.lang.System.in;
 
 public class Paiement extends AppCompatActivity {
 
@@ -31,19 +43,23 @@ public class Paiement extends AppCompatActivity {
     private Button boutvalidepai;
 
     private ModelPaiement modelpaiement;
+    private DatabaseReference mDatabase,mCarte;
+    private String rface;
 
     private TextView recuperqui;
     private TextView recuperdebit;
     private TextView recuperref;
     private TextView recupercode;
     //private Context context;
-
+    private ArrayList<ModelCarte> carteList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paiement);
 
         modelpaiement=new ModelPaiement();
+        ModelCarte modelCarte=new ModelCarte();
+        carteList=new ArrayList<>();
 
         textView=(TextView) findViewById(R.id.redirect);
         boutclearpai=(Button) findViewById(R.id.boutAnPai);
@@ -78,7 +94,15 @@ public class Paiement extends AppCompatActivity {
             }
         });
         affichersaisi();
+        //getDataFromServer();
     }
+
+    public class Constants {
+
+        public static final String FIREBASE_CHILD_PAIEMENT = "paiements";
+        public static final String FIREBASE_CHILD_CARTE = "cartes";
+    }
+
 
     public void affichersaisi(){
         //récupération des radioGroup
@@ -95,30 +119,61 @@ public class Paiement extends AppCompatActivity {
                 //récupération de l'identifiant du boton qui est séléctionné
                 int selectedIdperso=radiopersoGroup.getCheckedRadioButtonId();
                 int selectedIddebit=radiodebitGroup.getCheckedRadioButtonId();
-
-                //Identification du bouton à partir de l'id
                 radiopersoButton=(RadioButton) findViewById(selectedIdperso);
                 radiodebitButton=(RadioButton) findViewById(selectedIddebit);
 
-                modelpaiement.setQuipaie(radiopersoButton.getText().toString());
-                modelpaiement.setDebit(radiodebitButton.getText().toString());
-                modelpaiement.setReference(editref.getText().toString());
-                modelpaiement.setCodecarte(editcode.getText().toString());
 
-                //Affichage des valeurs
-                Toast.makeText(Paiement.this,modelpaiement.getQuipaie(),Toast.LENGTH_LONG).show();
-                Toast.makeText(Paiement.this,modelpaiement.getDebit(),Toast.LENGTH_LONG).show();
-                Toast.makeText(Paiement.this,modelpaiement.getReference(),Toast.LENGTH_LONG).show();
-                Toast.makeText(Paiement.this,modelpaiement.getCodecarte(),Toast.LENGTH_LONG).show();
-                //modelpaiement.getQuipaie(Toast.makeText(Paiement.this,radiopersoButton.getText().toString(),Toast.LENGTH_LONG).show());
-                //modelpaiement.getDebit();
+                    mDatabase = FirebaseDatabase
+                            .getInstance()
+                            .getReference(Constants.FIREBASE_CHILD_PAIEMENT);
 
-                //Toast.makeText(this,getText(String quipaie));
+                    modelpaiement.setQuipaie(radiopersoButton.getText().toString());
+                    modelpaiement.setDebit(radiodebitButton.getText().toString());
+                    modelpaiement.setReference(editref.getText().toString());
+                    modelpaiement.setCodecarte(editcode.getText().toString());
+                    if (modelpaiement.getReference().isEmpty() || modelpaiement.getCodecarte().isEmpty())
+                        Toast.makeText(Paiement.this, "Meri de renseigner tous les champs", Toast.LENGTH_SHORT).show();
+                    else
+                    {
+                        if (modelpaiement.getCodecarte().equals("500")){
+                            mDatabase.push().setValue(modelpaiement);
+                            Toast.makeText(Paiement.this, "Votre paiement a réussi avec succes", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            Toast.makeText(Paiement.this, "Code invalide", Toast.LENGTH_SHORT).show();
+                        //Affichage à partir du model avec get()
+                        // Toast.makeText(Paiement.this,modelpaiement.getQuipaie(),Toast.LENGTH_LONG).show();
+                    }
+                    }
 
-            }
+
+
         });
 
     }
+    /*public void getDataFromServer()
+    {
+        mCarte = FirebaseDatabase.getInstance().getReference();
 
+        mCarte.child("cartes").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists())
+                {
+                    for(DataSnapshot postSnapShot:dataSnapshot.getChildren())
+                    {
+                        ModelCarte user=postSnapShot.getValue(ModelCarte.class);
 
+                        carteList.add(user);
+                        Toast.makeText(Paiement.this, user+"", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }*/
 }

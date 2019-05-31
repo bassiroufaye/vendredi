@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wawinternet">
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/wawacc"
         android:label="@string/app_name"
         android:parentActivityName="com.example.wawinternet.MainActivity"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Activity.MonWifi"></activity>
+        <activity android:name=".MesMessages.WawPayment"></activity>
+        <activity android:name=".MesMessages.WawIncident" />
+        <activity android:name=".MesMessages.WawPromo" />
+        <activity android:name=".MesMessages.ServiceCommerciale" />
+        <activity android:name=".MesMessages.ServiceTechnique" />
+        <activity android:name=".Activity.Carte" />
+        <activity android:name=".Activity.MonWifi" />
         <activity android:name=".Activity.Reference" />
         <activity android:name=".Activity.Paiement" />
         <activity android:name=".Activity.Contact" />

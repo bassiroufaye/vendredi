@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "535812252018-lf1a5ie1skq3kc7gcvmu5girga0g7phg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wawinternet",
+            "certificate_hash": "744545985ac7c3ac21d84c113f024e261650fc5c"
+          }
+        },
+        {
           "client_id": "535812252018-ivou2eutmjv84l03u34kd4rddc2l5lh2.apps.googleusercontent.com",
           "client_type": 3
         }

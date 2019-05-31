@@ -1,5 +1,8 @@
 package com.example.wawinternet.Modeles;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ModelUser {
     private String id;
     private String nom;
@@ -9,6 +12,7 @@ public class ModelUser {
     private String debitAbonner;
     private double latitude;
     private double longitude;
+    private int imsi;
 
     public ModelUser() {
     }
@@ -75,5 +79,13 @@ public class ModelUser {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public int getImsi() {
+        return imsi;
+    }
+
+    public void setImsi(int imsi) {
+        this.imsi = imsi;
     }
 }

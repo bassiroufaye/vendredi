@@ -1,6 +1,7 @@
 package com.example.wawinternet.Adaptateur;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wawinternet.MesMessages.ServiceCommerciale;
+import com.example.wawinternet.MesMessages.ServiceTechnique;
+import com.example.wawinternet.MesMessages.WawIncident;
+import com.example.wawinternet.MesMessages.WawPayment;
+import com.example.wawinternet.MesMessages.WawPromo;
 import com.example.wawinternet.Modeles.MyObject;
 import com.example.wawinternet.R;
 
@@ -41,10 +47,37 @@ public class MyAdapterTicket extends RecyclerView.Adapter<MyAdapterTicket.MyView
         public void bind(MyObject myObject){
             textViewView.setText(myObject.getText());
             imageView.setImageResource(myObject.getImageUrl());
-            cardView.setOnClickListener(new View.OnClickListener() {
+
+            textViewView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    int position= getAdapterPosition();
+                    if(position==0){
+                        Intent intent0=new Intent(context, ServiceTechnique.class);
+                        context.startActivity(intent0);
+                    }
+                    else{
+                        if (position==1){
+                            Intent intent1=new Intent(context, ServiceCommerciale.class);
+                            context.startActivity(intent1);
+                        }
+                        else {
+                            if(position==2){
+                                Intent intent2=new Intent(context, WawPromo.class);
+                                context.startActivity(intent2);
+                            }
+                            else{
+                                if(position==3){
+                                    Intent intent3=new Intent(context, WawPayment.class);
+                                    context.startActivity(intent3);
+                                }
+                                else{
+                                    Intent intent4=new Intent(context, WawIncident.class);
+                                    context.startActivity(intent4);
+                                }
+                            }
+                        }
+                    }
                 }
             } );
         }
