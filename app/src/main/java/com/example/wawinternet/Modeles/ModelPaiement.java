@@ -1,13 +1,14 @@
 package com.example.wawinternet.Modeles;
 
 
-public class ModelPaiement {
-   // private int id;
+import android.content.Intent;
 
+public class  ModelPaiement {
+    private Integer id;
     private String quipaie;
     private String debit;
-    private String reference;
-    private String codecarte;
+    private int Abonnement_id;
+    private int codecarte;
 
     public ModelPaiement() {
 
@@ -31,19 +32,23 @@ public class ModelPaiement {
         this.debit = debit;
     }
 
-    public String getReference() {
-        return reference;
+    public int getAbonnement_id() {
+        return Abonnement_id;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public void setAbonnement_id(int Abonnement_id) {
+        this.Abonnement_id = Abonnement_id;
     }
 
-    public String getCodecarte() {
+    public int getCodecarte() {
         return codecarte;
     }
 
-    public void setCodecarte(String codecarte) {
+    public void setCodecarte(int codecarte) {
         this.codecarte = codecarte;
+    }
+
+    public int getId() {
+        return id;
     }
 }

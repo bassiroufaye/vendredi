@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.wawinternet.Modeles.ModelCarte;
 import com.example.wawinternet.Modeles.ModelPaiement;
+import com.example.wawinternet.PostPaiement;
 import com.example.wawinternet.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,9 +24,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static java.lang.System.in;
 
@@ -43,7 +51,7 @@ public class Paiement extends AppCompatActivity {
     private Button boutvalidepai;
 
     private ModelPaiement modelpaiement;
-    private DatabaseReference mDatabase,mCarte;
+    //private DatabaseReference mDatabase;
     private String rface;
 
     private TextView recuperqui;
@@ -93,18 +101,8 @@ public class Paiement extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        affichersaisi();
-        //getDataFromServer();
-    }
+        //affichersaisi();
 
-    public class Constants {
-
-        public static final String FIREBASE_CHILD_PAIEMENT = "paiements";
-        public static final String FIREBASE_CHILD_CARTE = "cartes";
-    }
-
-
-    public void affichersaisi(){
         //récupération des radioGroup
         radiopersoGroup=(RadioGroup) findViewById(R.id.radioGroup);
         radiodebitGroup=(RadioGroup) findViewById(R.id.radioGroup2);
@@ -113,6 +111,7 @@ public class Paiement extends AppCompatActivity {
         editcode=(EditText) findViewById(R.id.editText2);
         //récupération du bouton paiement
         boutvalidepai=(Button) findViewById(R.id.button);
+
         boutvalidepai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,57 +122,66 @@ public class Paiement extends AppCompatActivity {
                 radiodebitButton=(RadioButton) findViewById(selectedIddebit);
 
 
-                    mDatabase = FirebaseDatabase
+                //Link with firebase
+                /*mDatabase = FirebaseDatabase
                             .getInstance()
-                            .getReference(Constants.FIREBASE_CHILD_PAIEMENT);
+                            .getReference(Constants.FIREBASE_CHILD_PAIEMENT);*/
 
-                    modelpaiement.setQuipaie(radiopersoButton.getText().toString());
-                    modelpaiement.setDebit(radiodebitButton.getText().toString());
-                    modelpaiement.setReference(editref.getText().toString());
-                    modelpaiement.setCodecarte(editcode.getText().toString());
-                    if (modelpaiement.getReference().isEmpty() || modelpaiement.getCodecarte().isEmpty())
-                        Toast.makeText(Paiement.this, "Meri de renseigner tous les champs", Toast.LENGTH_SHORT).show();
-                    else
-                    {
-                        if (modelpaiement.getCodecarte().equals("500")){
-                            mDatabase.push().setValue(modelpaiement);
-                            Toast.makeText(Paiement.this, "Votre paiement a réussi avec succes", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(Paiement.this, "Code invalide", Toast.LENGTH_SHORT).show();
-                        //Affichage à partir du model avec get()
-                        // Toast.makeText(Paiement.this,modelpaiement.getQuipaie(),Toast.LENGTH_LONG).show();
-                    }
-                    }
+                modelpaiement.setQuipaie(radiopersoButton.getText().toString());
+                modelpaiement.setDebit(radiodebitButton.getText().toString());
+                modelpaiement.setAbonnement_id(Integer.parseInt(editref.getText().toString()));
+               // modelpaiement.setCodecarte(Integer.parseInt(editcode.getText().toString()));
+               // if (modelpaiement.getAbonnement_id().isEmpty() || modelpaiement.getCodecarte().isEmpty())
+                   // Toast.makeText(Paiement.this, "Meri de renseigner tous les champs", Toast.LENGTH_SHORT).show();
+                //else
+
+                    //if (modelpaiement.getCodecarte().equals("500"))
+                        //Send data to firebase
+                        // mDatabase.push().setValue(modelpaiement);
+
+                        sendNetworkRequest();
+                       // Toast.makeText(Paiement.this, "Votre paiement a réussi avec succes", Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
 
 
+    }
 
+   public class Constants {
+
+        public static final String FIREBASE_CHILD_PAIEMENT = "paiements";
+        public static final String FIREBASE_CHILD_CARTE = "cartes";
+    }
+
+
+    public void affichersaisi(){
+
+    }
+    public void sendNetworkRequest(){
+        //Create new retrofit
+        Retrofit.Builder builder=new Retrofit.Builder()
+                .baseUrl("http://192.168.1.43:8000/wawapi/")
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit=builder.build();
+
+        //get client & call object for the request
+        PostPaiement postPaiement=retrofit.create(PostPaiement.class);
+        Call<JsonObject> call= postPaiement.createPaiement("moi","4 MB",2435564,7000);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Toast.makeText(Paiement.this,response.message(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                Toast.makeText(Paiement.this,"Erreur, Merci d'essayer à nouveau",Toast.LENGTH_SHORT).show();
+
+            }
         });
 
     }
-    /*public void getDataFromServer()
-    {
-        mCarte = FirebaseDatabase.getInstance().getReference();
 
-        mCarte.child("cartes").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
-                {
-                    for(DataSnapshot postSnapShot:dataSnapshot.getChildren())
-                    {
-                        ModelCarte user=postSnapShot.getValue(ModelCarte.class);
-
-                        carteList.add(user);
-                        Toast.makeText(Paiement.this, user+"", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }*/
 }

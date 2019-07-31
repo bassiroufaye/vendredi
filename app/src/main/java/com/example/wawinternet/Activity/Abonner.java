@@ -29,6 +29,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wawinternet.Modeles.ModelUser;
+import com.example.wawinternet.PostAbonner;
+import com.example.wawinternet.PostPaiement;
 import com.example.wawinternet.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -39,11 +41,18 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class Abonner extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
@@ -175,7 +184,7 @@ public class Abonner extends AppCompatActivity implements GoogleApiClient.Connec
             case R.id.valider:
                 getCurrentLocation();
                 //afficher();
-                saveNewUser();
+                saveNewUser(modelUser);
                 break;
 
         }
@@ -219,7 +228,7 @@ public class Abonner extends AppCompatActivity implements GoogleApiClient.Connec
         public static final String FIREBASE_CHILD_ABONNE = "abonnées";
     }
 
-    private void saveNewUser() {
+    private void saveNewUser(ModelUser modelUser) {
         // Write a message to the database
         int selectedRdebit=RGdebit.getCheckedRadioButtonId();
         RBdebit=(RadioButton) findViewById(selectedRdebit);
@@ -227,9 +236,9 @@ public class Abonner extends AppCompatActivity implements GoogleApiClient.Connec
         RBlieu=(RadioButton) findViewById(selectedRlieu);
 
        // mDatabase = FirebaseDatabase.getInstance (). getReference ();
-        mDatabase =FirebaseDatabase
+       /* mDatabase =FirebaseDatabase
                 .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_ABONNE);
+                .getReference(Constants.FIREBASE_CHILD_ABONNE);*/
         modelUser.setNom(Rnom.getText().toString());
         modelUser.setPrenom(Rprenom.getText().toString());
         modelUser.setEmail(Remail.getText().toString());
@@ -237,15 +246,37 @@ public class Abonner extends AppCompatActivity implements GoogleApiClient.Connec
         modelUser.setDebitAbonner(RBdebit.getText().toString());
         modelUser.setLatitude(latitude01);
         modelUser.setLongitude(longitude01);
-        modelUser.setImsi(randomNum);
+        modelUser.setReference(randomNum);
+
+        //Create new retrofit
+        Retrofit.Builder builder=new Retrofit.Builder()
+                .baseUrl("http://192.168.1.43:8000/wawapi/")
+                .addConverterFactory(GsonConverterFactory.create());
+        Retrofit retrofit=builder.build();
+
+        //get client & call object for the request
+        PostAbonner postAbonner=retrofit.create(PostAbonner.class);
+        Call<JsonObject> call= postAbonner.createAbonnement(modelUser);
 
         if(RBlieu.getText().toString().equals("NON")){
             locationButton.setEnabled(false);
             Toast.makeText(Abonner.this, "Merci de faire l'abonnement sur le lieu du wifi", Toast.LENGTH_SHORT).show();
         }
         else{
-            mDatabase.push().setValue(modelUser);
-            Toast.makeText(Abonner.this, "Saved", Toast.LENGTH_SHORT).show();
+            /*mDatabase.push().setValue(modelUser);*/
+
+            call.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    Toast.makeText(Abonner.this,"Le paiement est bien pris en compte. Vous recevrez bientot un retour de notre part." ,Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(Abonner.this,"Erreur, Merci d'essayer à nouveau",Toast.LENGTH_SHORT).show();
+
+                }
+            });
         }
 
         /*mDatabase.child("Abonné").child(modelUser.getNom()).setValue(modelUser.getNom());
@@ -255,6 +286,12 @@ public class Abonner extends AppCompatActivity implements GoogleApiClient.Connec
         mDatabase.child("Abonné").child(modelUser.getDebitAbonner()).setValue(modelUser.getDebitAbonner());
         mDatabase.child("Abonné").child(modelUser.getLatitude()+"").setValue(modelUser.getLatitude());
         mDatabase.child("Abonné").child(modelUser.getLongitude()+"").setValue(modelUser.getLongitude());*/
+
+    }
+
+    public void sendNetworkRequest(ModelUser modelUser){
+
+
 
     }
 }

@@ -2,9 +2,9 @@ package com.example.wawinternet.Modeles;
 
 public class ModelCarte {
     private String numSerie;
-    private int code;
-    private String deitcarte;
-    private String dureecate;
+    private int codecarte;
+    private String debitcarte;
+    private String dureecarte;
 
     public ModelCarte() {
     }
@@ -17,27 +17,27 @@ public class ModelCarte {
         this.numSerie = numSerie;
     }
 
-    public int getCode() {
-        return code;
+    public int getCodecarte() {
+        return codecarte;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setCodecarte(int codecarte) {
+        this.codecarte = codecarte;
     }
 
-    public String getDeitcarte() {
-        return deitcarte;
+    public String getDebitcarte() {
+        return debitcarte;
     }
 
-    public void setDeitcarte(String deitcarte) {
-        this.deitcarte = deitcarte;
+    public void setDebitcarte(String debitcarte) {
+        this.debitcarte = debitcarte;
     }
 
-    public String getDureecate() {
-        return dureecate;
+    public String getDureecarte() {
+        return dureecarte;
     }
 
-    public void setDureecate(String dureecate) {
-        this.dureecate = dureecate;
+    public void setDureecarte(String dureecarte) {
+        this.dureecarte = dureecarte;
     }
 }

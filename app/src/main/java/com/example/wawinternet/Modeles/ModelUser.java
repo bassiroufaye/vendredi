@@ -12,7 +12,7 @@ public class ModelUser {
     private String debitAbonner;
     private double latitude;
     private double longitude;
-    private int imsi;
+    private int reference;
 
     public ModelUser() {
     }
@@ -81,11 +81,11 @@ public class ModelUser {
         this.longitude = longitude;
     }
 
-    public int getImsi() {
-        return imsi;
+    public int getReference() {
+        return reference;
     }
 
-    public void setImsi(int imsi) {
-        this.imsi = imsi;
+    public void setReference(int reference) {
+        this.reference = reference;
     }
 }
